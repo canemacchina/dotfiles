@@ -1,0 +1,41 @@
+add_newline = false
+
+format = """
+$username\
+$directory\
+$hostname\
+$line_break\
+$time\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$java\
+$character"""
+
+[character]
+symbol = "[»]"
+success_symbol = "[»](bold green)"
+error_symbol = "[✗](bold red)"
+
+[directory]
+truncate_to_repo = false
+truncation_length = 0
+style = "bold fg:004"
+
+[git_branch]
+style = "bold fg:010"
+
+[hostame]
+ssh_only = true
+
+[java]
+format = "\\([${symbol}${version}]($style)\\)"
+style = "bold fg:red"
+
+[status]
+disabled = false
+
+[time]
+disabled = false
+format = '[$time]($style) '

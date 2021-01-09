@@ -5,7 +5,8 @@ BREW_CASK_PACKAGES="${RESOURCES_DIRECTORY}/brew/brew_cask_packages"
 
 function tap_brew_repositories(){
   brew tap homebrew/cask-versions
-	brew tap homebrew/services
+  brew tap homebrew/services
+  brew tap homebrew/cask-drivers
   brew tap TomAnthony/brews
   brew tap buo/cask-upgrade
   brew tap mongodb/brew

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-function setup_poetry(){
-  run "install"
-  curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-}

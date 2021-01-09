@@ -57,7 +57,7 @@ function setup_sublime(){
   copy_sublime_packages
 }
 
-function bakup_sublime(){
+function backup_sublime(){
   run "backup sublime settings"
   backup_sublime_settings
 

@@ -22,7 +22,6 @@
   amend = !git add -A && git commit --amend --no-edit
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git bup && git bclean ${1-master}; }; f"
-  co = "!f(){ dest_branch=$(git branch -r | egrep -o "VR-$1-.*"); git checkout ${dest_branch:-master};}; f"
   send = "!f(){ git ca \"$1\"; git push origin; }; f"
   start = "!f(){ git bdone; git checkout -b $1 ${2-master}; git push --set-upstream origin $1; }; f"
   ronm = "!f(){ current_branch=$(git rev-parse --abbrev-ref HEAD); git bdone; git checkout $current_branch; git ron;}; f"

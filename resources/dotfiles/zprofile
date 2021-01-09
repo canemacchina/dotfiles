@@ -1,14 +1,12 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export BREW_PREFIX=$(brew --prefix)
+
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
 export MAVEN_OPTS="-Xmx2048m"
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_LATEST_HOME=$(/usr/libexec/java_home)
-
-export JAVA_HOME=$JAVA_LATEST_HOME
 
 # Use gnu-bins installed with brew instead of OSX defaults
 DIRS=(`brew --prefix`/opt/*/libexec/gnubin)
@@ -16,7 +14,7 @@ for dir in "${DIRS[@]}"
 do
   PATH=$dir:$PATH
 done
-export PATH="/usr/local/opt/mongodb-community@3.4/bin:$HOME/.poetry/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:$PATH:/usr/local/sbin:$HOME/git/private/flutter/bin"
+export PATH="$PATH:/usr/local/sbin"
 
 # Add man pages for gnu-bins
 MANS=(`brew --prefix`/opt/*/libexec/gnuman)
@@ -38,42 +36,4 @@ export DISABLE_AUTO_UPDATE="true"
 export DOTFILES_DIRECTORY="${HOME}/git/dotfiles"
 export ZSH_CUSTOM=${DOTFILES_DIRECTORY}/zshCustom
 
-export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_DIR_TRUNC=0
-export SPACESHIP_DIR_TRUNC_REPO=false
-export SPACESHIP_DIR_COLOR="004"
-export SPACESHIP_NODE_PREFIX=""
-export SPACESHIP_PYENV_PREFIX="("
-export SPACESHIP_PYENV_SUFFIX=") "
-export SPACESHIP_PYENV_COLOR=white
-export SPACESHIP_GIT_BRANCH_COLOR="010"
-export SPACESHIP_CHAR_SYMBOL="» "
-
-export SPACESHIP_TIME_SHOW=true
-export SPACESHIP_TIME_PREFIX=""
-
-export SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  node          # Node.js section
-  line_sep      # Line break
-  time
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
-export SPACESHIP_RPROMPT_ORDER=(
-  git           # Git section (git_branch + git_status)
-  pyenv         # Pyenv section
-)
-
-# initialize viralize vm tool
-export VVM_CONTEXT="player"
-source ~/.vvm/setup
-
-#see https://github.com/GoogleCloudPlatform/gsutil/issues/961
-export CLOUDSDK_PYTHON=/usr/local/opt/python@3.7/bin/python3
-
-export NVM_DIR="$HOME/.nvm"
-export BREW_PREFIX=$(brew --prefix)
+export STARSHIP_CONFIG=~/.starship

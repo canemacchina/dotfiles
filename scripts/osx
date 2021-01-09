@@ -246,6 +246,7 @@ function set_osx_preferences(){
 	if [[ $response =~ (yes|y|Y) ]]; then
 	  run "wiping"
 	  defaults write com.apple.dock persistent-apps -array
+	  killall Dock
 	else
 	  message "skip wiping dock icons"
 	fi

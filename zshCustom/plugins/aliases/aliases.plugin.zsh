@@ -1,11 +1,12 @@
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
 alias ls='ls --color=auto'
 alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lhA'
-alias rm='trash'
 alias gi='git'
 alias cls='printf "\033c"';
-alias clear='cls';
 alias ag='ag -f --hidden'
 
 alias server='python -m SimpleHTTPServer'
@@ -14,22 +15,16 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ag='ag -f --hidden'
-
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
 alias flush_dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder;'
 
-alias update_host_no_ads='python3 ~/git/hosts/updateHostsFile.py -e gambling fakenews && cp ~/git/hosts/hosts ~/bitbarPlugins/hosts/NO_ADS'
+alias update_host_no_ads='python3 ~/git/hosts/updateHostsFile.py -a -g -e gambling fakenews && cp ~/git/hosts/hosts ~/bitbarPlugins/hosts/NO_ADS'
 alias update_osx='printf "check apple update\n"; sudo softwareupdate --verbose -i -a;'
 alias update_brew='printf "update brew\n"; brew update -v; brew upgrade; brew cu -ay --cleanup; brew cleanup -s; brew doctor; brew missing;'
-alias update_zsh='printf "update zgen\n"; zgen selfupdate; printf "update zgen plugins\n"; zgen update; source ~/.zshrc; zgen reset;'
-alias update='update_brew; update_node; update_zsh;'
+alias update_zsh='printf "update zinit\n"; zinit self-update; printf "update zinit plugins\n"; zinit update;'
+alias clear-eval-cache='rm $HOME/.zsh-evalcache'
+alias update='clear-eval-cache; update_brew; update_zsh; source ~/.zshrc'
 
 alias backup='bash ~/git/dotfiles/setup.sh -b'
-
-alias update_vm='vvm down && vvm update && vvm restore postgres gcs viralize && vvm restore mongo gcs selector && vvm migrate'
 
 # OS X has no `md5sum`, so use `md5` as a fallback
 command -v md5sum > /dev/null || alias md5sum="md5"
@@ -40,13 +35,8 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias fix_directory_permissions='sudo find . -type d -exec chmod 755 {} \;'
 alias fix_file_permissions='sudo find . -type f -exec chmod 644 {} \;'
 alias fix_permissions='fix_file_permissions && fix_directory_permissions'
+alias fix_git_completion='rm /usr/local/share/zsh/site-functions/_git'
 
 alias itermocil='itermocil --here'
 
-alias fix_vvm_kafka='vvm stop; rm -rf ~/.vvm/player/data/zoo* ~/.vvm/player/data/kafka-*; vvm up'
-alias fix_git_completion='rm /usr/local/share/zsh/site-functions/_git'
-
 alias profile_shell_startup='for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done'
-
-alias java11='export JAVA_HOME=$JAVA_11_HOME && java -version'
-alias javaLatest='export JAVA_HOME=$JAVA_LATEST_HOME && java -version'

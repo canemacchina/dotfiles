@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_FILES="aliases functions git-prompt gitconfig gitignore nanorc zshrc zprofile"
+CONFIG_FILES="gitconfig gitignore nanorc zshrc zprofile starship"
 CONFIG_FILES_BACKUP_FOLDER="${HOME}/dotfiles_backup/"
 CONFIG_FILES_DIR="${RESOURCES_DIRECTORY}/dotfiles/"
 
