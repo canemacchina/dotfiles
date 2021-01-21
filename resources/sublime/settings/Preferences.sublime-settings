@@ -28,12 +28,11 @@
 	"ignored_packages":
 	[
 		"Dockerfile Syntax Highlighting",
-		"FileDiffs",
-		"MarkdownPreview",
-		"Ngx HTML",
-		"SublimeLinter-eslint",
-		"SublimeLinter-pep8",
-		"SublimeLinter-shellcheck",
+		"ESLint-Formatter",
+		"GitSavvy",
+		"Markdown Preview",
+		"ReactJS",
+		"SublimeLinter-pyflakes",
 		"Sync View Scroll",
 		"Vintage"
 	],
