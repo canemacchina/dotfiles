@@ -27,6 +27,7 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"Angular2 HTML Syntax",
 		"Dockerfile Syntax Highlighting",
 		"ESLint-Formatter",
 		"GitSavvy",
