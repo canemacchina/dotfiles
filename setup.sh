@@ -64,7 +64,7 @@ function check_requirements(){
   message "check for brew installation"
   if ! command_exists 'brew'; then
     run "installing Homebrew"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew doctor
   else
     message "nothing to do, brew already installed"
