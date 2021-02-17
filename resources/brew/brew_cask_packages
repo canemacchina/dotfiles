@@ -1,4 +1,6 @@
 adoptopenjdk
+adoptopenjdk11
+adoptopenjdk8
 android-file-transfer
 appcleaner
 bitbar
@@ -6,6 +8,7 @@ clipy
 docker
 evernote
 google-backup-and-sync
+google-chat
 google-chrome
 intellij-idea
 iterm2
