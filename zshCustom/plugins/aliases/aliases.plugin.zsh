@@ -21,7 +21,7 @@ alias update_host_no_ads='python3 ~/git/hosts/updateHostsFile.py -a -g -e gambli
 alias update_osx='printf "check apple update\n"; sudo softwareupdate --verbose -i -a;'
 alias update_brew='printf "update brew\n"; brew update -v; brew upgrade; brew cu -ay --cleanup; brew cleanup -s; brew doctor; brew missing;'
 alias update_zsh='printf "update zinit\n"; zinit self-update; printf "update zinit plugins\n"; zinit update;'
-alias clear-eval-cache='rm $HOME/.zsh-evalcache'
+alias clear-eval-cache='ls $HOME/.zsh-evalcache &> /dev/null && rm -rf $HOME/.zsh-evalcache'
 alias update='clear-eval-cache; update_brew; update_zsh; source ~/.zshrc'
 
 alias backup='bash ~/git/dotfiles/setup.sh -b'
@@ -40,3 +40,5 @@ alias fix_git_completion='rm /usr/local/share/zsh/site-functions/_git'
 alias itermocil='itermocil --here'
 
 alias profile_shell_startup='for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done'
+
+alias git_pull_all='find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -P10 -I {} git -C {} pull'
