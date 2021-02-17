@@ -40,7 +40,7 @@ _jvm() {
   if (( CURRENT == 3 )); then
     local arguments=()
     jvm list 2>&1 | head -n -1 | tail -n +2 | while IFS= read -r line ; do
-      local v=$(echo $line | cut -d'"' -f1 | cut -d"." -f1 | cut -d" " -f5)
+      local v=$(echo $line | cut -d'"' -f1 | cut -d"," -f1 | cut -d" " -f5)
       arguments+=(${v##*/})
     done
     _values '' $arguments && ret=0
