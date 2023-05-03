@@ -13,9 +13,9 @@ export MANPAGER='less -X';
 
 export HISTORY_IGNORE="(history|ls|l|la|ll|lla|lsa|cd|cd *|pwd|exit|* --help|man *|cls|clear)"
 
-# ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
-
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+
+export PATH=~/.local/bin:$PATH
 
 zstyle ':omz:update' mode disabled
 zstyle :omz:plugins:keychain agents ssh
@@ -41,6 +41,7 @@ if ! zgenom saved; then
 	zgenom oh-my-zsh plugins/aliases
 	zgenom oh-my-zsh plugins/history-substring-search
 	zgenom oh-my-zsh plugins/keychain
+	zgenom oh-my-zsh plugins/ripgrep
 
 	zgenom load chrissicool/zsh-256color
 	zgenom load romkatv/powerlevel10k powerlevel10k
@@ -71,7 +72,6 @@ alias ll='ls -lh'
 alias lla='ls -lhA'
 alias gi='git'
 alias cls='printf "\033c"';
-alias ag='ag -f --hidden'
 
 alias open='xdg-open'
 
@@ -88,7 +88,7 @@ alias clear_eval_cache='ls $HOME/.zsh-evalcache &> /dev/null && rm -rf $HOME/.zs
 alias clear_pacman_cache='yay -Scc'
 alias update_system='printf "update sysyem\n"; yay -Syu; printf "removing orphan packages"; yay -Rns $(yay -Qqtd)'
 alias update_zsh='printf "update zgenom\n"; zgenom selfupdate; printf "update zsh plugins\n"; zgenom update; printf "remove unused plugins"; zgenom clean'
-alias update='clear_eval_cache; clear_pacman_cache; update_system; update_zsh; nvm upgrade; update_zsh_direnv; printf "now exit and reload the shell"'
+alias update='clear_eval_cache; clear_pacman_cache; update_system; update_zsh; printf "update nvm"; nvm upgrade; update_zsh_direnv; printf "now exit and reload the shell"'
 
 alias tmux_layout='tmux list-windows -F "#{window_active} #{window_layout}" | grep "^1" | cut -d " " -f 2'
 alias tx='tmuxinator'
