@@ -8,11 +8,13 @@ call plug#begin()
 	Plug 'navarasu/onedark.nvim'
 	Plug 'junegunn/vim-plug'
 	Plug 'alker0/chezmoi.vim'
+	Plug 'jeffkreeftmeijer/vim-numbertoggle'
 call plug#end()
 
 colorscheme onedark
 
 set number "add line numbers
+set relativenumber
 
 set nowrap "do not wrap lines
 
