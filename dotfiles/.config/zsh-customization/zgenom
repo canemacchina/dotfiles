@@ -1,0 +1,33 @@
+source "${HOME}/.zgenom/zgenom.zsh"
+
+if ! zgenom saved; then
+
+	zgenom compdef
+
+	zgenom oh-my-zsh
+	zgenom oh-my-zsh plugins/colored-man-pages
+	zgenom oh-my-zsh --completion plugins/docker
+	zgenom oh-my-zsh --completion plugins/docker-compose
+	zgenom oh-my-zsh --completion plugins/mvn
+	zgenom oh-my-zsh plugins/gradle
+	zgenom oh-my-zsh plugins/mvn
+	zgenom oh-my-zsh plugins/aliases
+	zgenom oh-my-zsh plugins/history-substring-search
+    zgenom oh-my-zsh plugins/ssh-agent
+    zgenom oh-my-zsh plugins/ripgrep
+
+	zgenom load chrissicool/zsh-256color
+	zgenom load romkatv/powerlevel10k powerlevel10k
+	zgenom load zsh-users/zsh-completions
+	zgenom load lukechilds/zsh-nvm
+	zgenom load mroth/evalcache
+	zgenom load zdharma-continuum/history-search-multi-word
+	zgenom load zpm-zsh/clipboard
+	zgenom load mattmc3/zsh-safe-rm
+	zgenom load zdharma-continuum/zsh-diff-so-fancy
+	zgenom load ptavares/zsh-direnv
+    zgenom load lukechilds/zsh-nvm
+	zgenom load zdharma-continuum/fast-syntax-highlighting
+
+	zgenom save
+fi

@@ -1,0 +1,23 @@
+zstyle ':omz:update' mode disabled
+
+zstyle :omz:plugins:ssh-agent identities id_ecdsa
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+
+zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS};
+zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=31=33"
+zstyle ":completion:*" sort true
+
+# autocomplete ssh and scp with hosts from ssh config and known_hosts
+h=()
+if [[ -r ~/.ssh/config ]]; then
+	h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+if [[ -r ~/.ssh/known_hosts ]]; then
+	h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+if [[ $#h -gt 0 ]]; then
+	zstyle ':completion:*:ssh:*' hosts $h
+	zstyle ':completion:*:slogin:*' hosts $h
+	zstyle ':completion:*:scp:*' hosts $h
+fi

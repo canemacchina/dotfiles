@@ -1,0 +1,17 @@
+export VISUAL=nvim
+export EDITOR=nvim
+export SYSTEMD_EDITOR=$EDITOR
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+export HISTORY_IGNORE="(history|ls|l|la|ll|lla|lsa|cd|cd *|pwd|exit|* --help|man *|cls|clear)"
+
+export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+
+export PATH=~/.local/bin:$PATH
+
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
+export NVM_AUTO_USE=true
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
