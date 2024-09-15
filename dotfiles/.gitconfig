@@ -1,0 +1,112 @@
+[alias]
+  graph = log --graph --decorate --pretty=oneline --abbrev-commit --full-history --all
+	tree = log --graph --decorate --abbrev-commit --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	alias = !git config --list | grep alias | cut -c 7-
+	bup = "!f(){ current_branch=$(git rev-parse --abbrev-ref HEAD); git fetch --prune; git reset --hard origin/$current_branch; }; f"
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	ron = "!f(){ git fetch; git rebase --keep-empty -i origin/${1-master}; }; f"
+	rc = !git rebase --continue;
+	ra = !git rebase --abort;
+	ca = "!f(){ git add -A ; git commit -m \"$1\"; }; f"
+	rabort = !git reflog | grep -v rebase | head -1 | sed -e \"s/^\\([[:alnum:]][[:alnum:]]*\\)\\(.*\\)/\\1/g\" | git reset —hard
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	undo = !git reset HEAD~1 --mixed
+	amend = !git add -A && git commit --amend --no-edit
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+	bdone = "!f() { git checkout ${1-master} && git bup && git bclean ${1-master}; }; f"
+	send = "!f(){ git ca \"$1\"; git push origin; }; f"
+	start = "!f(){ git bdone; git checkout -b $1 ${2-master}; git push --set-upstream origin $1; }; f"
+	ronm = "!f(){ current_branch=$(git rev-parse --abbrev-ref HEAD); git bdone; git checkout $current_branch; git ron;}; f"
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[branch]
+	autosetuprebase = always
+	autosetupmerge = always
+
+[core]
+	# Use custom .gitignore
+	excludesfile = ~/.gitignore
+	# Make `git rebase` safer on OS X
+	trustctime = false
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	precomposeunicode = true
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	# set hooks directory
+	# hooksPath = ./hooks
+	autocrlf = input
+	editor = nvim
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = true
+
+[color "branch"]
+	current = green bold
+	local = green
+	remote = cyan
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+
+[diff "bin"]
+	# Use `hexdump` to diff binary files
+	textconv = hexdump -v -C
+
+[help]
+	# Do not automatically correct and execute mistyped commands
+	autocorrect = 0
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[user]
+	name = Lorenzo Bugiani
+	email = lorenzo.bugiani@gmail.com
+
+[includeIf "gitdir:~/git/masabi/"]
+	path = ~/git/masabi/.gitconfig
+
+[commit]
+	template = ~/.stCommitMsg
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+#[sequence]
+#	editor = interactive-rebase-tool
+
+[pull]
+	rebase = true
+
+[rebase]
+	autostash = true
+
+[interactive-rebase-tool]
+	inputMoveSelectionDown = "Right"
+	inputMoveSelectionUp = "Left"
+	inputMoveLeft = "j"
+	inputMoveRight = "k"
+	inputScrollLeft	= "j"
+	inputScrollRight = "k"
+	inputRebase = "Enter"
+	inputAbort = "Esc"
