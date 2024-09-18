@@ -1,13 +1,3 @@
-unset_ip(){
-	sudo ip addr del 192.168.0.200/24 dev $1
-}
-
-set_ip(){
-	sudo ip link set down $1
-	sudo ip addr add 192.168.0.200/24 dev $1 
-	sudo ip link set up $1
-}
-
 show_process_on_port() {
 	lsof -iTCP -sTCP:LISTEN -P -n  | grep --color $1
 }
@@ -27,17 +17,3 @@ _git-start () {
 _git-ron () {
 	_git-checkout
 }
-
-get_fan_profile() {
-	sudo smbios-thermal-ctl -g
-}
-
-set_fan_profile() {
-	sudo smbios-thermal-ctl --set-thermal-mode=$1
-}
-
-_set_fan_profile(){
-	compadd 'quiet' 'balanced' 'performance' 'cool-bottom'
-}
-
-compdef _set_fan_profile set_fan_profile

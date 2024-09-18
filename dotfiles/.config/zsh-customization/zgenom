@@ -26,7 +26,6 @@ if ! zgenom saved; then
 	zgenom load mattmc3/zsh-safe-rm
 	zgenom load zdharma-continuum/zsh-diff-so-fancy
 	zgenom load ptavares/zsh-direnv
-    zgenom load lukechilds/zsh-nvm
 	zgenom load zdharma-continuum/fast-syntax-highlighting
 
 	zgenom save

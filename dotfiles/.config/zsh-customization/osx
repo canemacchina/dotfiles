@@ -1,0 +1,25 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export BREW_PREFIX=$(brew --prefix)
+
+# Use gnu-bins installed with brew instead of OSX defaults
+DIRS=($BREW_PREFIX/opt/*/libexec/gnubin)
+for dir in "${DIRS[@]}"
+do
+  PATH=$dir:$PATH
+done
+
+PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+
+# Add man pages for gnu-bins
+MANS=($BREW_PREFIX/opt/*/libexec/gnuman)
+for man in "${MANS[@]}"
+do
+  MANPATH=$man:$MANPATH
+done
+export MANPATH="/usr/local/man:$MANPATH"
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi

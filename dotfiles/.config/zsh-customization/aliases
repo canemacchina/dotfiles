@@ -2,6 +2,7 @@
 alias sudo='sudo -E '
 
 alias vim='nvim'
+alias vi='nvim'
 
 alias ls='ls --color=auto'
 alias la='ls -A'
@@ -16,13 +17,17 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias top='bpytop'
 
 alias profile_shell_startup='for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done'
 
-alias update_host_no_ads='docker run --pull always --rm -it -v /etc/hosts:/etc/hosts ghcr.io/stevenblack/hosts:latest updateHostsFile.py -gar -e gambling fakenews; printf "refresh DNS\n"; sudo systemctl restart nscd'
+alias update_host_no_ads='python3 ~/git/system/hosts/updateHostsFile.py -grf -e gambling fakenews'
+alias update_osx='printf "check apple update\n"; sudo softwareupdate --verbose -i -a;'
+alias update_brew='printf "update brew\n"; brew update -v; brew upgrade; brew cu -ay --cleanup; brew cleanup -s; brew doctor; brew missing;'
 alias clear_eval_cache='ls $HOME/.zsh-evalcache &> /dev/null && rm -rf $HOME/.zsh-evalcache'
 alias clear_pacman_cache='yay -Scc'
-alias update_system='clear_pacman_cache; printf "update sysyem\n"; yay -Syu; printf "removing orphan packages"; yay -Rns $(yay -Qqtd)'
 alias update_zsh='printf "update zgenom\n"; zgenom selfupdate; printf "update zsh plugins\n"; zgenom update; printf "remove unused plugins"; zgenom clean'
-alias update='clear_eval_cache; update_system; printf "update sdkman\n"; sdk update; sdk selfupdate; update_zsh; printf "update nvm"; nvm upgrade; update_zsh_direnv; printf "now exit and reload the shell"'
+alias update='clear_eval_cache; update_brew; printf "update sdkman\n"; sdk update; sdk selfupdate; update_zsh; update_zsh_direnv; printf "now exit and reload the shell"'
+
+alias docker_stop_all='docker stop $(docker ps -a -q)'
+alias docker_remove_all='docker rm $(docker ps -a -q)'
+alias docker_reset='docker_stop_all && docker_remove_all'
