@@ -9,10 +9,6 @@ source ~/.config/zsh-customization/env
 source ~/.config/zsh-customization/options
 source ~/.config/zsh-customization/zstyles
 source ~/.config/zsh-customization/zgenom
-
-_evalcache dircolors -b
-autoload -U colors && colors
-
 source ~/.config/zsh-customization/aliases
 source ~/.config/zsh-customization/functions
 

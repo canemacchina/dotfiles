@@ -31,3 +31,6 @@ if ! zgenom saved; then
 
 	zgenom save
 fi
+
+_evalcache dircolors -b
+autoload -U colors && colors
