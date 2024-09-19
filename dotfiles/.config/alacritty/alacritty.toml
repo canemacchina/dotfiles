@@ -48,39 +48,24 @@ family = "MesloLGS NF"
 style = "Regular"
 
 [[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u0003"
-key = "C"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mods = "Control"
-
-[[keyboard.bindings]]
 chars = "\u001Bb"
 key = "Left"
-mods = "Control"
+mods = "Alt"
 
 [[keyboard.bindings]]
 chars = "\u001Bf"
 key = "Right"
-mods = "Control"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001bOH"
+key = "Up"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001bOF"
+key = "Down"
+mods = "Alt"
 
 [mouse]
 hide_when_typing = false
