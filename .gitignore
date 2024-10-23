@@ -1,1 +1,5 @@
 lazy-lock.json
+dotfiles/.ssh/id_ecdsa
+dotfiles/.ssh/id_ecdsa.pub
+dotfiles/.ssh/known_hosts
+dotfiles/.ssh/known_hosts.old
